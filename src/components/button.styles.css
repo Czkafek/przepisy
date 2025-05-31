@@ -1,0 +1,16 @@
+button {
+    width: 300px;
+    padding: 24px;
+    border-radius: 4px;
+    border: none;
+    background-color: #180000;
+    color: #fff;
+    font-size: 20px;
+    transition: opacity 0.1s;
+}
+button:hover {
+    opacity: 0.9;
+}
+button:active {
+    opacity: 0.8;
+}
