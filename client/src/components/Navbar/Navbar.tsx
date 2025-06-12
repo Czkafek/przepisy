@@ -1,13 +1,16 @@
 import './Navbar.styles.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Navbar() {
+
+    const location = useLocation();
+
     return <div className='NavbarContainer'>
         <div className='Navbar'>
-            <Link to="/">Strona główna</Link>
-            <Link to="/recipe">Przepisy</Link>
-            <Link to="/search">Szukaj</Link>
-            <Link to="/account">Konto</Link>
+            <Link className={location.pathname == "/" ? "currentPage" : ""} to="/">Strona główna</Link>
+            <Link className={location.pathname == "/recipe" ? "currentPage" : ""} to="/recipe">Przepisy</Link>
+            <Link className={location.pathname == "/search" ? "currentPage" : ""} to="/search">Szukaj</Link>
+            <Link className={location.pathname == "/account" ? "currentPage" : ""} to="/account">Konto</Link>
         </div>
     </div>
 }

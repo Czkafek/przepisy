@@ -4,3 +4,9 @@
     max-height: 500px;
     object-fit: cover;
 }
+
+@media (min-width: 1500px) {
+    .hero {
+        max-height: 650px;
+    }
+}
