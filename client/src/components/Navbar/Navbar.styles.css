@@ -14,16 +14,21 @@
     width: 100%;
     max-width: 1000px;
     padding: 16px;
+    position: relative;
 }
-.Navbar a {
+.Navbar a, .recipes {
     font-size: 16px;
     color: #000;
     text-decoration: none;
     padding: 16px;
 }
-.Navbar a:hover {
-    background-color: rgba(242, 242, 242, 0.6);
+.Navbar a:hover, .recipes:hover, .dropdown a:hover, .categorie:hover {
+    background-color: rgba(216, 216, 216, 0.6);
     backdrop-filter: blur(5px);
+}
+.recipes {
+    cursor: default;
+    display: inline;
 }
 
 .currentPage {
@@ -31,7 +36,39 @@
 }
 
 @media (min-width: 1440px) {
-    .Navbar {
+    .Navbar, .contentContainer {
         max-width: 1400px;
     }
+}
+
+
+.dropdown {
+    position: fixed;
+    top: 54px;
+    width: 100%;
+    padding: 0px 16px;
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+    border-bottom: solid #000 1px;
+    backdrop-filter: blur(5px);
+    left: 0;
+}
+
+.dropdown .categorie {
+    font-size: 16px;
+    color: #000;
+    text-decoration: none;
+    padding: 8px 16px;
+}
+.categories, .subCategories {
+    display: flex;
+    flex-direction: column;
+    max-width: 240px;
+}
+.contentContainer {
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
 }
