@@ -15,7 +15,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/account" element={<Account />} />
-      <Route path="/recipe" element={<Recipe />} />
+      <Route path="/recipe/:name" element={<Recipe />} />
       <Route path="/search" element={<Search />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

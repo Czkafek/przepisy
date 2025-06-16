@@ -29,6 +29,17 @@
 .recipes {
     cursor: default;
     display: inline;
+    position: relative;
+}
+.helpElement {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+}
+.recipesContainer {
+    display: inline;
 }
 
 .currentPage {
@@ -46,7 +57,6 @@
     position: fixed;
     top: 54px;
     width: 100%;
-    padding: 0px 16px;
     background-color: rgba(255, 255, 255, 0.95);
     display: flex;
     justify-content: center;
@@ -61,14 +71,23 @@
     color: #000;
     text-decoration: none;
     padding: 8px 16px;
+    cursor:default;
 }
 .categories, .subCategories {
     display: flex;
     flex-direction: column;
     max-width: 240px;
+    border-left: solid #000 1px ;
+}
+.subCategories .sub {
+    cursor: pointer;
 }
 .contentContainer {
     display: flex;
-    max-width: 1000px;
     width: 100%;
+    padding: 0px 16px;
+}
+
+.myRecipes {
+    cursor: pointer !important;
 }
