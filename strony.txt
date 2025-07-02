@@ -1,0 +1,2 @@
+https://www.softsuave.com/blog/nodejs-server-with-supabase/
+https://supabase.com/dashboard/project/xidfntezwaejyehulicx/database/schemas

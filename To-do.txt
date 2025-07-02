@@ -1,0 +1,13 @@
+To-do
+- Połączenie z bazą danych
+- Walidacja express
+- endpointy:
+ - /login
+ - /register
+ - /refresh_token
+ - /search_recipe
+ - /recipe?name=""
+- middleware:
+ - validation express
+ - authentication
+- połaczyć z github
