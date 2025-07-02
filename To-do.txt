@@ -1,5 +1,5 @@
 To-do
-- Połączenie z bazą danych
+done- Połączenie z bazą danych
 - Walidacja express
 - endpointy:
  - /login
@@ -10,4 +10,4 @@ To-do
 - middleware:
  - validation express
  - authentication
-- połaczyć z github
+done- połaczyć z github
