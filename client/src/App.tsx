@@ -6,7 +6,8 @@ import Account from './pages/Account/Account'
 import Search from './pages/Search/Search'
 import Recipe from './pages/Recipe/Recipe'
 import NotFoundPage from './pages/NotFound/NotFoundPage'
-
+import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
 
 export default function App() {
 
@@ -17,6 +18,8 @@ export default function App() {
       <Route path="/account" element={<Account />} />
       <Route path="/recipe/:name" element={<Recipe />} />
       <Route path="/search" element={<Search />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </>
