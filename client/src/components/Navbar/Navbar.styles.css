@@ -55,7 +55,7 @@
 
 .dropdown {
     position: fixed;
-    top: 54px;
+    top: 51px;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.95);
     display: flex;
@@ -100,6 +100,13 @@
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
+    transition: opacity 0.2s;
+}
+.loginBtn button:hover, .registerBtn button:hover {
+    opacity: 0.8;
+}
+.loginBtn button:active, .registerBtn button:active {
+    opacity: 0.6;
 }
 .loginBtn button {
     background-color: #efefef;

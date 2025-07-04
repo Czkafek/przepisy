@@ -24,7 +24,8 @@ form .searchBar {
 
 form .submitBtn {
     padding: 10px 16px 12px 16px;
-    background-color: #e98636;
+    background-color: #f35d00;
+    /*background-color: #e98636;*/
     font-size: 16px;
     border-radius: 8px;
     border: none;
