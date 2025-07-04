@@ -13,16 +13,16 @@
 .Navbar {
     width: 100%;
     max-width: 1000px;
-    padding: 16px;
+    padding: 7px;
     position: relative;
 }
-.Navbar a, .recipes {
+.Navbar .option, .recipes {
     font-size: 16px;
     color: #000;
     text-decoration: none;
     padding: 16px;
 }
-.Navbar a:hover, .recipes:hover, .dropdown a:hover, .categorie:hover {
+.Navbar .option:hover, .recipes:hover, .dropdown a:hover, .categorie:hover {
     background-color: rgba(216, 216, 216, 0.6);
     backdrop-filter: blur(5px);
 }
@@ -90,4 +90,24 @@
 
 .myRecipes {
     cursor: pointer !important;
+}
+
+.loginBtn , .registerBtn {
+    margin: 0px 8px;
+}
+.loginBtn button, .registerBtn button {
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.loginBtn button {
+    background-color: #efefef;
+    border: 1px solid #bbbbbb;
+}
+.registerBtn button {
+    background-color: #f35d00;
+    color: #f0f0f0;
+    font-weight: 500;
+    border: 1px solid #311300;
 }
