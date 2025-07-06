@@ -1,10 +1,21 @@
 import './Register.styles.css'
+import { useState } from 'react';
 
 export default function Register() {
 
+    const [data, setData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        error: ''
+    });
+
     const handleSubmit = (e : React.SyntheticEvent) => {
         e.preventDefault();
-        console.log(e);
+
+    }
+    const handleChange = (field : string) => {
+
     }
 
 
@@ -12,11 +23,11 @@ export default function Register() {
         <form className='accountForm' onSubmit={handleSubmit}>
             <h2>Zarejestruj się</h2>
             <label>Nazwa</label>
-            <input type="text" placeholder='Nazwa' />
+            <input value={data.name} onChange={() => handleChange("name")} type="text" placeholder='Nazwa' />
             <label>Email</label>
-            <input type="text" placeholder='Email' />
+            <input value={data.email} onChange={() => handleChange("email")} type="text" placeholder='Email' />
             <label>Hasło</label>
-            <input type="password" placeholder='Hasło' />
+            <input value={data.password} onChange={() => handleChange("password")} type="password" placeholder='Hasło' />
             <input type="submit" value='Zaloguj się' />
         </form>
     </>
