@@ -58,7 +58,6 @@ export default function Navbar() {
         if(isHovered) {
             const handleMouseOver = (e: MouseEvent) => {
                 const target = e.target as HTMLElement;
-                console.log(target.closest(".recipesContainer"))
                 if(!target.closest(".recipesContainer")) {
                     setIsHovered(false);
                     setSubCategories("");
