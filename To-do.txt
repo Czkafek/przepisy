@@ -11,3 +11,4 @@ done- Połączenie z bazą danych
  - validation express
  - authentication
 done- połaczyć z github
+done- login i register frontend
