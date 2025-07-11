@@ -8,7 +8,7 @@ done- Połączenie z bazą danych
  - /search_recipe
  - /recipe?name=""
 - middleware:
- - validation express
+ done- validation express
  - authentication
 done- połaczyć z github
 done- login i register frontend
