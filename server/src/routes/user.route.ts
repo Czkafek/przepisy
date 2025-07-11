@@ -10,7 +10,16 @@ router.get("/", (req, res) => {
 });
 // LOGIN endpoint
 router.post("/login", createLoginChain(), checkValidation,  async (req :Request, res :Response) => {
-    const { data, error } = await supabase.from('users').select().eq('name', req.login);
+    const { data, error } = await supabase.from('users').select().eq('name', req.body.login);
+    if(error){
+        res.status(400).json({ seuccess: false, error });
+        return;
+    }
+    if(data.length < 1) {
+        res.status(404).json({ success: false, message: 'no records found' });
+        return;
+    }
+    res.status(200).json({ success: true, data });
 });
 // REGISTER endpoint
 router.post("/register", createRegisterChain(), checkValidation, (req :Request, res :Response) => {
