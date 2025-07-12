@@ -20,7 +20,11 @@ router.post("/login", createLoginChain(), checkValidation, async (req :Request, 
         res.status(404).json({ success: false, message: 'no records found' });
         return;
     }
-    res.status(200).json({ success: true, data });
+    if(req.body.password === data[0].password) {
+        res.status(200).json({ success: true, data });
+        return;
+    }
+    res.status(401).json({ success: false, message: 'invalid password' });
 });
 // REGISTER endpoint
 router.post("/register", createRegisterChain(), checkValidation, (req :Request, res :Response) => {
