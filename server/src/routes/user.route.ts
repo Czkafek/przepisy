@@ -9,8 +9,9 @@ router.get("/", (req, res) => {
     res.send("User GET endpoint");
 });
 // LOGIN endpoint
-router.post("/login", createLoginChain(), checkValidation,  async (req :Request, res :Response) => {
-    const { data, error } = await supabase.from('users').select().eq('name', req.body.login);
+router.post("/login", createLoginChain(), checkValidation, async (req :Request, res :Response) => {
+    
+    const { data, error } = await supabase.from('users').select().eq("name", req.body.login);
     if(error){
         res.status(400).json({ seuccess: false, error });
         return;
