@@ -10,8 +10,10 @@ router.get("/", (req, res) => {
 });
 // LOGIN endpoint
 router.post("/login", createLoginChain(), checkValidation, async (req :Request, res :Response) => {
+    const isEmail = req.body.login.includes('@');
+    const field = isEmail ? 'email' : 'name';
+    const { data, error } = await supabase.from('users').select().eq(field, req.body.login);
     
-    const { data, error } = await supabase.from('users').select().eq("name", req.body.login);
     if(error){
         res.status(400).json({ seuccess: false, error });
         return;
@@ -27,8 +29,37 @@ router.post("/login", createLoginChain(), checkValidation, async (req :Request, 
     res.status(401).json({ success: false, message: 'invalid password' });
 });
 // REGISTER endpoint
-router.post("/register", createRegisterChain(), checkValidation, (req :Request, res :Response) => {
-
+router.post("/register", createRegisterChain(), checkValidation, async (req :Request, res :Response) => {
+    const nameResult = await supabase.from('users').select().eq('name', req.body.name);
+    const emailResult = await supabase.from('users').select().eq('email', req.body.email);
+    //const { data, error } = await supabase.from('users').select().or(`name.eq.${req.body.name},email.eq.${req.body.email}`);
+    if(nameResult.error || emailResult.error){
+        res.status(400).json({ seuccess: false, 'nameResult.error': nameResult.error, 'emailResult.error': emailResult.error });
+        return;
+    }
+    if(nameResult.data.length > 0) {
+        res.status(409).json({ success: false, message: "username already in use"});
+        return;
+    }
+    if(emailResult.data.length > 0) {
+        res.status(409).json({ success: false, message: "email already in use"});
+        return;
+    }
+    /*const { data, error } = await supabase.auth.signUp({
+        email: req.body.email,
+        password: req.body.password,
+        options: {
+            data: {
+                name: req.body.name
+            }
+        }
+    });*/
+    const { data, error } = await supabase.from("users").insert({ name: req.body.name, email: req.body.email, password: req.body.password});
+    if(error){
+        res.status(400).json({ success: false, error });
+        return;
+    }
+    res.status(200).json({ success: true, data });
 });
 
 

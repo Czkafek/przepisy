@@ -1,7 +1,7 @@
 import { body, oneOf } from 'express-validator'
 
 const createRegisterChain = () => [
-    body('username')
+    body('name')
         .notEmpty().withMessage("Username is required")
         .isLength({ min: 3, max: 50}).withMessage("Username must be between 3 and 50 characters long")
         .matches(/^[a-zA-Z0-9._]+$/).withMessage("Username can only contain letters, numbers, dots, and underscores"),
