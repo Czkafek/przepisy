@@ -2,6 +2,7 @@ import { Router, Request, Response } from "express";
 import { createLoginChain, createRegisterChain } from '../utils/validation';
 import checkValidation from "../utils/checkValidation";
 import supabase from "../utils/db";
+import { checkPassword, hashPassword } from "../utils/passwordHash";
 
 const router = Router();
 
@@ -22,7 +23,7 @@ router.post("/login", createLoginChain(), checkValidation, async (req :Request, 
         res.status(404).json({ success: false, message: 'no records found' });
         return;
     }
-    if(req.body.password === data[0].password) {
+    if(checkPassword(data[0].password, req.body.password)) {
         res.status(200).json({ success: true, data });
         return;
     }
@@ -45,16 +46,7 @@ router.post("/register", createRegisterChain(), checkValidation, async (req :Req
         res.status(409).json({ success: false, message: "email already in use"});
         return;
     }
-    /*const { data, error } = await supabase.auth.signUp({
-        email: req.body.email,
-        password: req.body.password,
-        options: {
-            data: {
-                name: req.body.name
-            }
-        }
-    });*/
-    const { data, error } = await supabase.from("users").insert({ name: req.body.name, email: req.body.email, password: req.body.password});
+    const { data, error } = await supabase.from("users").insert({ name: req.body.name, email: req.body.email, password: hashPassword(req.body.password)});
     if(error){
         res.status(400).json({ success: false, error });
         return;

@@ -12,3 +12,6 @@ done- Połączenie z bazą danych
  - authentication
 done- połaczyć z github
 done- login i register frontend
+done- password hash funkcje
+- JWT
+done- jwt basic functions
