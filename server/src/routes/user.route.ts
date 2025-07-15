@@ -3,6 +3,7 @@ import { createLoginChain, createRegisterChain } from '../utils/validation';
 import checkValidation from "../utils/checkValidation";
 import supabase from "../utils/db";
 import { checkPassword, hashPassword } from "../utils/passwordHash";
+import { createAccessToken, createRefreshToken } from "../utils/jwt";
 
 const router = Router();
 
@@ -24,7 +25,9 @@ router.post("/login", createLoginChain(), checkValidation, async (req :Request, 
         return;
     }
     if(checkPassword(data[0].password, req.body.password)) {
-        res.status(200).json({ success: true, data });
+        const token = createAccessToken(data[0].id);
+        res.cookie("refreshToken", createRefreshToken(data[0].id), { httpOnly: true });
+        res.status(200).json({ success: true, data, accessToken: token });
         return;
     }
     res.status(401).json({ success: false, message: 'invalid password' });

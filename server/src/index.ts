@@ -1,12 +1,19 @@
 import express from "express";
+import cors from 'cors';
 import UserRouter from "./routes/user.route"
 import AuthRouter from "./routes/auth.route"
 import supabase from "./utils/db";
+import cookieParser from 'cookie-parser'
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cookieParser());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'POST', 'DELETE', 'UPDATE', 'PATCH']
+}));
 app.use("/user", UserRouter);
 app.use("/auth", AuthRouter);
 
