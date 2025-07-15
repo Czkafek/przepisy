@@ -24,7 +24,7 @@ router.post("/login", createLoginChain(), checkValidation, async (req :Request, 
         res.status(404).json({ success: false, message: 'no records found' });
         return;
     }
-    if(checkPassword(data[0].password, req.body.password)) {
+    if(await checkPassword(data[0].password, req.body.password)) {
         const token = createAccessToken(data[0].id);
         res.cookie("refreshToken", createRefreshToken(data[0].id), { httpOnly: true });
         res.status(200).json({ success: true, data, accessToken: token });

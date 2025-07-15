@@ -15,3 +15,5 @@ done- login i register frontend
 done- password hash funkcje
 - JWT
 done- jwt basic functions
+done- creating and attaching jwt in /login
+done- adding cors to backend

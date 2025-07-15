@@ -1,19 +1,31 @@
 import './Login.styles.css'
 import { useState } from 'react';
+import axios from 'axios'
 
 export default function Login() {
 
-    const [data, setData] = useState({
+    const [formData, setFormData] = useState({
         login: '', password: '', error: ''
     });
 
-    const handleSubmit = (e : React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+        try {
+            console.log()
+            const {data} = await axios.post("http://localhost:3000/user/login", {
+                login: formData.login,
+                password: formData.password
+            });
+            console.log(data);
+            localStorage.setItem("token", data.accessToken);
+            console.log(localStorage.getItem("token"));
+        } catch(error) {
+            console.log(error);
+        }
     };
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setData({ ...data, [name]: value});
+        setFormData({ ...formData, [name]: value});
     };
 
 
