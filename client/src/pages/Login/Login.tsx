@@ -10,6 +10,14 @@ export default function Login() {
 
     const handleSubmit = async (e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (!(formData.login.length > 2 && ((formData.login.includes('@') && formData.login.length < 255) || (formData.login.match("^[a-zA-Z0-9._]+$") && formData.login.length < 51)))) {
+            setFormData({ ...formData, error: "Login must be valid username or email" })
+            return;
+        }
+        if (!(formData.password.length > 7 && formData.password.length < 129)) {
+            setFormData({ ...formData, error: "Password must be between 8 and 128 characters long" });
+            return;
+        }
         try {
             console.log()
             const {data} = await axios.post("http://localhost:3000/user/login", {
@@ -21,6 +29,10 @@ export default function Login() {
             console.log(localStorage.getItem("token"));
         } catch(error) {
             console.log(error);
+            if (typeof error === "string")
+                setFormData({ ...formData, error: error })
+            else if (error instanceof Error)
+                setFormData({ ...formData, error: error.message })
         }
     };
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
