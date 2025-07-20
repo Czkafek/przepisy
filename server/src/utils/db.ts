@@ -8,4 +8,6 @@ console.log("Supabase Key:", supabaseKey ? "Loaded" : "Missing");
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+console.log("Supabase client has been created");
+
 export default supabase;

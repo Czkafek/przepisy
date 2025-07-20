@@ -52,3 +52,9 @@
 .accountForm input[type=submit]:active {
     opacity: 0.6;
 }
+
+.error {
+    margin: 0px 0px 8px 0px;
+    color: #ce1b1b;
+    font-weight: 600;
+}
