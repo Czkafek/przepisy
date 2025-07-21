@@ -1,6 +1,7 @@
 import './Login.styles.css'
 import { useState } from 'react';
 import axios from 'axios'
+import { AxiosError } from 'axios';
 
 export default function Login() {
 
@@ -31,8 +32,8 @@ export default function Login() {
             console.log(error);
             if (typeof error === "string")
                 setFormData({ ...formData, error: { name: "system", msg: error } })
-            else if (error instanceof Error)
-                setFormData({ ...formData, error: { name: "system", msg: error.response.data.message }})
+            else if (error instanceof AxiosError)
+                setFormData({ ...formData, error: { name: "system", msg: error.response?.data.message }})
         }
     };
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
